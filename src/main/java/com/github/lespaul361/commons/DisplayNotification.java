@@ -2,7 +2,6 @@ package com.github.lespaul361.commons;
 
 import com.notification.NotificationFactory;
 import com.notification.manager.SlideManager;
-import sun.audio.*;
 import com.theme.ThemePackage;
 import com.utils.Time;
 import java.io.InputStream;
@@ -442,7 +441,8 @@ public class DisplayNotification {
         Runnable r1 = new Runnable() {
             @Override
             public void run() {
-
+                SoundPlayer.playSound(soundStream);
+/*
                 try {
                     // create an audiostream from the inputstream
                     AudioStream audioStream = new AudioStream(soundStream);
@@ -452,6 +452,7 @@ public class DisplayNotification {
                 } catch (Exception e) {
                     e.printStackTrace(System.out);
                 }
+                */
             }
         };
         Thread t1 = new Thread(r1);
