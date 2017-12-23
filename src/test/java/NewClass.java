@@ -1,5 +1,6 @@
 
 import com.github.lespaul361.commons.DisplayNotification;
+import com.utils.Time;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,7 +16,8 @@ import com.github.lespaul361.commons.DisplayNotification;
  */
 public class NewClass {
     public static void main(String[] args) {
-        DisplayNotification.showNotification("Title", "subtitle",DisplayNotification.MessageIconType.Warning, (double)10, DisplayNotification.ThemePackagePresets.Aqua);
-        //System.exit(0);
+        DisplayNotification.NotificationBuilder builder=new DisplayNotification.NotificationBuilder("title", "subtitle");
+        builder.time(Time.seconds(20)).icon(DisplayNotification.MessageIconType.Question).theme(DisplayNotification.ThemePackagePresets.Aqua);
+        builder.showNotification();
     }
 }

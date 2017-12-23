@@ -8,13 +8,13 @@ import com.utils.Time;
 import java.io.InputStream;
 import javax.swing.ImageIcon;
 
-/*
- * Class to help simplify showing notifications such as in windows 10 to the 
- * user using JCommunique by Samuel Pfrommer found at 
- * https://github.com/spfrommer/JCommunique. Also plays a sound when 
- * notification is shown.
+/**
+ * Class to help simplify showing notifications such as in windows 10 to the
+ * user using JCommunique by Samuel Pfrommer found at
+ * <a href="https://github.com/spfrommer/JCommunique">https://github.com/spfrommer/JCommunique</a>.
+ * Also plays a sound when notification is shown.
  *
- *@author Charles Hamilton
+ * @author Charles Hamilton
  */
 public class DisplayNotification {
 
@@ -22,11 +22,44 @@ public class DisplayNotification {
      * Preset theme packs
      */
     public enum ThemePackagePresets {
-        CleanDark, CleanLight, Aqua
+        /**
+         * A black window with light text
+         */
+        CleanDark,
+        /**
+         * A white window with dark text
+         */
+        CleanLight,
+        /**
+         * An aqua window with dark text
+         */
+        Aqua
     }
 
+    /**
+     * The type of icon to use
+     */
     public enum MessageIconType {
-        Exclamation, Warning, Error, Question, None
+        /**
+         * An exclamation icon
+         */
+        Exclamation,
+        /**
+         * A warning icon
+         */
+        Warning,
+        /**
+         * An error icon
+         */
+        Error,
+        /**
+         * A question icon
+         */
+        Question,
+        /**
+         * No icon
+         */
+        None
     }
 
     /**
@@ -47,24 +80,24 @@ public class DisplayNotification {
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
      * @param preset a preset theme pack
-     * <p>
-     * <table>
-     * <th>Preset Name</th>
-     * <th>Description</th>
-     * <tr>
+     * <table summary="" border="1">
+     * <tr align="center">
+     * <td>Preset Name</td>
+     * <td>Description</td>
+     * </tr>
+     * <tr align="left">
      * <td>CleanDark</td>
-     * <td>Black window with light text</td>
+     * <td>A black window with light text</td>
      * </tr>
-     * <tr>
+     * <tr align="left">
      * <td>CleanLight</td>
-     * <td>White window with dark text</td>
+     * <td>A white window with dark text</td>
      * </tr>
-     * <tr>
+     * <tr align="left">
      * <td>Aqua</td>
-     * <td>Aqua window with dark text</td>
+     * <td>An aqua window with dark text</td>
      * </tr>
      * </table>
-     * </p>
      */
     public static void showNotification(String title, String subTitle,
             ThemePackagePresets preset) {
@@ -90,7 +123,8 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification {@link MessageIconType}
      */
     public static void showNotification(String title, String subTitle,
             MessageIconType messageType) {
@@ -103,9 +137,28 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification
      * @param preset a preset theme pack
-     
+     * <table summary="" border="1">
+     * <tr align="center">
+     * <td>Preset Name</td>
+     * <td>Description</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanDark</td>
+     * <td>A black window with light text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanLight</td>
+     * <td>A white window with dark text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>Aqua</td>
+     * <td>An aqua window with dark text</td>
+     * </tr>
+     * </table>
+     *
      */
     public static void showNotification(String title, String subTitle,
             MessageIconType messageType, ThemePackagePresets preset) {
@@ -118,7 +171,8 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification
      * @param themePackage the theme to use
      */
     public static void showNotification(String title, String subTitle,
@@ -147,7 +201,25 @@ public class DisplayNotification {
      * @param subTitle the subtitle of the notification
      * @param seconds the length of time in seconds to show the notification
      * @param preset a preset theme pack
-     
+     * <table summary="" border="1">
+     * <tr align="center">
+     * <td>Preset Name</td>
+     * <td>Description</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanDark</td>
+     * <td>A black window with light text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanLight</td>
+     * <td>A white window with dark text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>Aqua</td>
+     * <td>An aqua window with dark text</td>
+     * </tr>
+     * </table>
+     *
      */
     public static void showNotification(String title, String subTitle,
             double seconds, ThemePackagePresets preset) {
@@ -174,7 +246,8 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification
      * @param seconds the length of time in seconds to show the notification
      */
     public static void showNotification(String title, String subTitle,
@@ -190,10 +263,29 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification
      * @param seconds the length of time in seconds to show the notification
      * @param preset a preset theme pack
-     
+     * <table summary="" border="1">
+     * <tr align="center">
+     * <td>Preset Name</td>
+     * <td>Description</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanDark</td>
+     * <td>A black window with light text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanLight</td>
+     * <td>A white window with dark text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>Aqua</td>
+     * <td>An aqua window with dark text</td>
+     * </tr>
+     * </table>
+     *
      */
     public static void showNotification(String title, String subTitle,
             MessageIconType messageType, double seconds,
@@ -209,7 +301,8 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification
      * @param seconds the length of time in seconds to show the notification
      * @param themePackage the theme to use
      */
@@ -245,7 +338,25 @@ public class DisplayNotification {
      * @param milliSeconds the length of time in milliseconds to show the
      * notification
      * @param preset a preset theme pack
-     
+     * <table summary="" border="1">
+     * <tr align="center">
+     * <td>Preset Name</td>
+     * <td>Description</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanDark</td>
+     * <td>A black window with light text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanLight</td>
+     * <td>A white window with dark text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>Aqua</td>
+     * <td>An aqua window with dark text</td>
+     * </tr>
+     * </table>
+     *
      */
     public static void showNotification(String title, String subTitle,
             int milliSeconds, ThemePackagePresets preset) {
@@ -277,7 +388,8 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification
      * @param milliSeconds the length of time in milliseconds to show the
      * notification
      */
@@ -294,11 +406,30 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification
      * @param milliSeconds the length of time in milliseconds to show the
      * notification
      * @param preset a preset theme pack
-     
+     * <table summary="" border="1">
+     * <tr align="center">
+     * <td>Preset Name</td>
+     * <td>Description</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanDark</td>
+     * <td>A black window with light text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanLight</td>
+     * <td>A white window with dark text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>Aqua</td>
+     * <td>An aqua window with dark text</td>
+     * </tr>
+     * </table>
+     *
      */
     public static void showNotification(String title, String subTitle,
             MessageIconType messageType, int milliSeconds,
@@ -314,7 +445,8 @@ public class DisplayNotification {
      *
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
-     * @param messageType selects the icon to show in the notification
+     * @param messageType a {@link MessageIconType} value to select the icon to
+     * show in the notification
      * @param milliSeconds the length of time in milliseconds to show the
      * notification
      * @param themePackage the theme to use
@@ -353,7 +485,25 @@ public class DisplayNotification {
      * @param time the amount of time to show the notification
      * @param soundClip a stream with the sound to play
      * @param preset a preset theme pack
-     
+     * <table summary="" border="1">
+     * <tr align="center">
+     * <td>Preset Name</td>
+     * <td>Description</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanDark</td>
+     * <td>A black window with light text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>CleanLight</td>
+     * <td>A white window with dark text</td>
+     * </tr>
+     * <tr align="left">
+     * <td>Aqua</td>
+     * <td>An aqua window with dark text</td>
+     * </tr>
+     * </table>
+     *
      */
     public static void showNotification(String title, String subTitle,
             ImageIcon icon, Time time, InputStream soundClip,
@@ -489,7 +639,7 @@ public class DisplayNotification {
         private ThemePackage themePackage = com.theme.ThemePackagePresets.cleanDark();
         private Time time = Time.seconds(5);
         private ImageIcon icon = null;
-        private InputStream soundStream = null;
+        private InputStream soundStream = getAudioFromResource();
 
         /**
          * Constructs a new <code>NotificationBuilder</code>
@@ -517,30 +667,82 @@ public class DisplayNotification {
          * Use a preset theme package
          *
          * @param preset a pre made theme package
+         * <table summary="" border="1">
+         * <tr align="center">
+         * <td>Preset Name</td>
+         * <td>Description</td>
+         * </tr>
+         * <tr align="left">
+         * <td>CleanDark</td>
+         * <td>A black window with light text</td>
+         * </tr>
+         * <tr align="left">
+         * <td>CleanLight</td>
+         * <td>A white window with dark text</td>
+         * </tr>
+         * <tr align="left">
+         * <td>Aqua</td>
+         * <td>An aqua window with dark text</td>
+         * </tr>
+         * </table>
+         * @return this notification builder
          */
         public NotificationBuilder theme(ThemePackagePresets preset) {
             this.themePackage = getThemePackage(preset);
             return this;
         }
 
+        /**
+         * A custom theme to use for the notification
+         *
+         * @param themePackage the <code>ThemePackage</code> to use
+         * @return this notification builder
+         */
         public NotificationBuilder theme(ThemePackage themePackage) {
             this.themePackage = themePackage;
             return this;
         }
 
+        /**
+         * The icon to use from internal resources
+         *
+         * @param iconType a {@link MessageIconType} value to select the icon to
+         * show in the notification
+         * @return this notification builder
+         */
         public NotificationBuilder icon(MessageIconType iconType) {
             this.icon = getImageIcon(iconType);
             return this;
         }
 
+        /**
+         * The icon to use for the notification
+         *
+         * @param icon an icon file
+         * @return this notification builder
+         */
         public NotificationBuilder icon(ImageIcon icon) {
             this.icon = icon;
             return this;
         }
 
+        /**
+         * An <code>InputStream</code> for the sound to play when the
+         * notification is shown
+         *
+         * @param audioStream the sound stream
+         * @return this notification builder
+         */
         public NotificationBuilder sound(InputStream audioStream) {
             this.soundStream = audioStream;
             return this;
+        }
+        
+        /**
+         * Shows the notification from the builder
+         */
+        public void showNotification(){
+            showNotificationHelper(title, subtitle, icon, time, soundStream, themePackage);
         }
     }
 }
