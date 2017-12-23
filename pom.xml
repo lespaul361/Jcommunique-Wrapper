@@ -3,8 +3,29 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.lespaul361</groupId>
     <artifactId>Commons-NotificationWrapper</artifactId>
-    <version>2.0.1</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    
+    <name>JCommunique</name>
+    <description>JCommunique is a free, open-source desktop notification library. It offers a range of features with a simple-to-use API. This is a maven repack, code is unchanged</description>
+    <url>https://github.com/lespaul361/Jcommunique-Wrapper</url>
+    <licenses>
+        <license>
+            <name>MIT Liscense</name>
+            <url>https://github.com/spfrommer/JCommunique/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Charles Hamilton</name>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git//github.com/lespaul361/Jcommunique-Wrapper.git</connection>
+        <developerConnection>scm:git:git@github.com:lespaul361:Jcommunique-Wrappergit</developerConnection>
+        <url>https://github.com/lespaul361/Jcommunique-Wrapper</url>
+    </scm>
+    
     <dependencies>
         <dependency>
             <groupId>com.github.lespaul361</groupId>
@@ -24,5 +45,60 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.0.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.5</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>3.0.2</version>
+                        
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
     <name>Commons-NotificationWrapper</name>
 </project>
