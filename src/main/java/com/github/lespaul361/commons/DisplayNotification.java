@@ -2,6 +2,7 @@ package com.github.lespaul361.commons;
 
 import com.notification.NotificationFactory;
 import com.notification.manager.SlideManager;
+import com.notification.types.WindowNotification;
 import com.theme.ThemePackage;
 import com.utils.Time;
 import java.io.InputStream;
@@ -46,6 +47,24 @@ public class DisplayNotification {
      * @param title the title of the notification
      * @param subTitle the subtitle of the notification
      * @param preset a preset theme pack
+     * <p>
+     * <table>
+     * <th>Preset Name</th>
+     * <th>Description</th>
+     * <tr>
+     * <td>CleanDark</td>
+     * <td>Black window with light text</td>
+     * </tr>
+     * <tr>
+     * <td>CleanLight</td>
+     * <td>White window with dark text</td>
+     * </tr>
+     * <tr>
+     * <td>Aqua</td>
+     * <td>Aqua window with dark text</td>
+     * </tr>
+     * </table>
+     * </p>
      */
     public static void showNotification(String title, String subTitle,
             ThemePackagePresets preset) {
@@ -86,6 +105,7 @@ public class DisplayNotification {
      * @param subTitle the subtitle of the notification
      * @param messageType selects the icon to show in the notification
      * @param preset a preset theme pack
+     
      */
     public static void showNotification(String title, String subTitle,
             MessageIconType messageType, ThemePackagePresets preset) {
@@ -127,6 +147,7 @@ public class DisplayNotification {
      * @param subTitle the subtitle of the notification
      * @param seconds the length of time in seconds to show the notification
      * @param preset a preset theme pack
+     
      */
     public static void showNotification(String title, String subTitle,
             double seconds, ThemePackagePresets preset) {
@@ -172,6 +193,7 @@ public class DisplayNotification {
      * @param messageType selects the icon to show in the notification
      * @param seconds the length of time in seconds to show the notification
      * @param preset a preset theme pack
+     
      */
     public static void showNotification(String title, String subTitle,
             MessageIconType messageType, double seconds,
@@ -223,6 +245,7 @@ public class DisplayNotification {
      * @param milliSeconds the length of time in milliseconds to show the
      * notification
      * @param preset a preset theme pack
+     
      */
     public static void showNotification(String title, String subTitle,
             int milliSeconds, ThemePackagePresets preset) {
@@ -275,6 +298,7 @@ public class DisplayNotification {
      * @param milliSeconds the length of time in milliseconds to show the
      * notification
      * @param preset a preset theme pack
+     
      */
     public static void showNotification(String title, String subTitle,
             MessageIconType messageType, int milliSeconds,
@@ -329,6 +353,7 @@ public class DisplayNotification {
      * @param time the amount of time to show the notification
      * @param soundClip a stream with the sound to play
      * @param preset a preset theme pack
+     
      */
     public static void showNotification(String title, String subTitle,
             ImageIcon icon, Time time, InputStream soundClip,
@@ -369,11 +394,16 @@ public class DisplayNotification {
                     t2 = time;
                 }
 
+                WindowNotification wn = null;
                 if (icon != null) {
-                    manager.addNotification(factory.buildIconNotification(title, subTitle, icon), t2);
+                    wn = factory.buildIconNotification(title, subTitle, icon);
+                    wn.setCloseOnClick(true);
                 } else {
-                    manager.addNotification(factory.buildTextNotification(title, subTitle), t2);
+                    wn = factory.buildTextNotification(title, subTitle);
+                    wn.setCloseOnClick(true);
                 }
+                manager.addNotification(wn, t2);
+
             }
         };
         playSound(soundClip);
@@ -402,7 +432,7 @@ public class DisplayNotification {
                 fileName = "warning.png";
                 break;
             case Question:
-                fileName="Question.png";
+                fileName = "Question.png";
                 break;
             case None:
                 return null;
@@ -442,21 +472,75 @@ public class DisplayNotification {
             @Override
             public void run() {
                 SoundPlayer.playSound(soundStream);
-/*
-                try {
-                    // create an audiostream from the inputstream
-                    AudioStream audioStream = new AudioStream(soundStream);
-
-                    // play the audio clip with the audioplayer class
-                    AudioPlayer.player.start(audioStream);
-                } catch (Exception e) {
-                    e.printStackTrace(System.out);
-                }
-                */
             }
         };
         Thread t1 = new Thread(r1);
         t1.start();
     }
 
+    /**
+     * Builder for making a notification. The default theme is cleanDark and
+     * lasts 5 seconds.
+     */
+    public static class NotificationBuilder {
+
+        private final String title;
+        private final String subtitle;
+        private ThemePackage themePackage = com.theme.ThemePackagePresets.cleanDark();
+        private Time time = Time.seconds(5);
+        private ImageIcon icon = null;
+        private InputStream soundStream = null;
+
+        /**
+         * Constructs a new <code>NotificationBuilder</code>
+         *
+         * @param title the title of the notification
+         * @param subtitle the subtitle of the notification
+         */
+        public NotificationBuilder(String title, String subtitle) {
+            this.title = title;
+            this.subtitle = subtitle;
+        }
+
+        /**
+         * The amount of time to show the notification unless it is clicked
+         *
+         * @param time the time to show the notification. Default is 5 seconds
+         * @return this notification builder
+         */
+        public NotificationBuilder time(Time time) {
+            this.time = time;
+            return this;
+        }
+
+        /**
+         * Use a preset theme package
+         *
+         * @param preset a pre made theme package
+         */
+        public NotificationBuilder theme(ThemePackagePresets preset) {
+            this.themePackage = getThemePackage(preset);
+            return this;
+        }
+
+        public NotificationBuilder theme(ThemePackage themePackage) {
+            this.themePackage = themePackage;
+            return this;
+        }
+
+        public NotificationBuilder icon(MessageIconType iconType) {
+            this.icon = getImageIcon(iconType);
+            return this;
+        }
+
+        public NotificationBuilder icon(ImageIcon icon) {
+            this.icon = icon;
+            return this;
+        }
+
+        public NotificationBuilder sound(InputStream audioStream) {
+            this.soundStream = audioStream;
+            return this;
+        }
+    }
 }
