@@ -22,7 +22,12 @@ class SoundPlayer {
 
     public static void playSound(InputStream in) {
         try {
-            InputStream ain = new BufferedInputStream(in);
+            InputStream ain = null;
+            if (in instanceof BufferedInputStream) {
+                ain = in;
+            } else {
+                ain = new BufferedInputStream(in);
+            }
             AudioFileFormat fileFormat = AudioSystem.getAudioFileFormat(ain);
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(ain);
             AudioFormat format = fileFormat.getFormat();

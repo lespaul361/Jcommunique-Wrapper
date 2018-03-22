@@ -7,4 +7,12 @@
                 <goal>dependency:resolve</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-clean deploy</actionName>
+            <displayName>clean deploy</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>deploy</goal>
+            </goals>
+        </action>
     </actions>
