@@ -25,15 +25,29 @@
         <developerConnection>scm:git:git@github.com:lespaul361:Jcommunique-Wrappergit</developerConnection>
         <url>https://github.com/lespaul361/Jcommunique-Wrapper</url>
     </scm>
+    <!--
+        <distributionManagement>
+            <snapshotRepository>
+                <id>ossrh</id>
+                <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            </snapshotRepository>
+            <repository>
+                <id>ossrh</id>
+                <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            </repository>
+        </distributionManagement>
+    -->
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+            <id>nexus-releases</id>            
+            <url>http://localhost:8081/nexus/content/repositories/releases/</url>
         </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>            
+            <url>
+                http://192.168.0.101:8081/nexus/content/repositories/snapshots/
+            </url>
+        </snapshotRepository>
     </distributionManagement>
     <dependencies>
         <dependency>
