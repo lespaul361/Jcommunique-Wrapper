@@ -6,6 +6,7 @@ import com.notification.types.WindowNotification;
 import com.theme.ThemePackage;
 import com.utils.Time;
 import java.io.InputStream;
+import java.net.URL;
 import javax.swing.ImageIcon;
 
 /**
@@ -589,11 +590,14 @@ public class DisplayNotification {
 
         }
         try {
-            InputStream in = ClassLoader.class.getResourceAsStream("/" + fileName);
-            byte[] imageData = org.apache.commons.io.IOUtils.toByteArray(in);
-
-            ImageIcon icon = new ImageIcon(imageData, "");
-            return icon;
+            URL imageURL = DisplayNotification.class.getResource("/" + fileName);
+            if (imageURL
+                == null) {
+            System.err.println("Resource not found: /" + fileName);
+            return null;
+        } else {
+             return new  ImageIcon(imageURL);                
+        }
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }

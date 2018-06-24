@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.lespaul361</groupId>
     <artifactId>Commons-NotificationWrapper</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
     
     <name>Commons-NotificationWrapper</name>
@@ -25,7 +25,6 @@
         <developerConnection>scm:git:git@github.com:lespaul361:Jcommunique-Wrappergit</developerConnection>
         <url>https://github.com/lespaul361/Jcommunique-Wrapper</url>
     </scm>
-   <!--
         <distributionManagement>
             <snapshotRepository>
                 <id>ossrh</id>
@@ -36,8 +35,8 @@
                 <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
             </repository>
         </distributionManagement>
-        --> 
-    <distributionManagement>
+    <!--
+   <distributionManagement>
         <repository>
             <id>nexus-releases</id>            
             <url>http://localhost:8081/nexus/content/repositories/releases/</url>
@@ -49,7 +48,8 @@
             </url>
         </snapshotRepository>
     </distributionManagement>
-   
+       --> 
+    
     <dependencies>
         <dependency>
             <groupId>com.github.lespaul361</groupId>
